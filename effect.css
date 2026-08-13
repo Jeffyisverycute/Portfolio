@@ -1,0 +1,224 @@
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes spin-slower { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+@keyframes twinkle { 0%,100% { opacity: 0.35; } 50% { opacity: 1; } }
+@keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes pulse-glow { 0%,100% { box-shadow: 0 0 18px rgba(139,107,255,0.35); } 50% { box-shadow: 0 0 36px rgba(139,107,255,0.65); } }
+
+/* ============================================================
+   HERO — index.html
+   ============================================================ */
+.hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 40px;
+  align-items: center;
+  padding: 50px 0 70px;
+}
+
+@media (max-width: 800px) {
+  .hero { grid-template-columns: 1fr; padding-top: 30px; }
+}
+
+.hero .eyebrow { margin-bottom: 18px; }
+
+.hero h1 {
+  font-size: clamp(2.1rem, 5.2vw, 3.1rem);
+  line-height: 1.3;
+}
+.hero h1 .accent {
+  background: linear-gradient(120deg, var(--cyan), var(--aurora));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero .lede {
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  margin-top: 20px;
+  max-width: 48ch;
+}
+
+.hero-cta {
+  margin-top: 32px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-meta {
+  margin-top: 30px;
+  display: flex;
+  gap: 22px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.5px;
+}
+.hero-meta span b { color: var(--cyan); display: block; font-size: 0.95rem; margin-bottom: 2px; }
+
+/* ---- portrait porthole ---- */
+.porthole {
+  position: relative;
+  width: min(320px, 84vw);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  animation: float-y 6s ease-in-out infinite;
+}
+
+.porthole-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px dashed var(--line-strong);
+}
+.porthole-ring.r2 { inset: 18px; border-style: solid; border-color: var(--line); animation: spin-slow 40s linear infinite; }
+.porthole-ring.r3 { inset: 36px; border-style: dashed; border-color: rgba(70,230,213,0.35); animation: spin-slower 30s linear infinite; }
+
+.porthole-frame {
+  position: absolute;
+  inset: 54px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at 35% 25%, #1a2050, var(--bg-void) 70%);
+  border: 3px solid var(--cyan);
+  box-shadow: var(--glow-cyan), 0 20px 60px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 14px;
+}
+.porthole-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+.porthole-orbiter {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 14px rgba(246,196,83,0.9);
+  top: 50%;
+  left: 50%;
+  margin: -6px;
+  animation: orbit-dot 9s linear infinite;
+}
+@keyframes orbit-dot {
+  from { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+}
+
+/* ============================================================
+   ORBIT NAVIGATION DIAGRAM — signature element, index.html
+   Each real section of the site (Personal / Education / Works /
+   Contact) is an orbiting body at a distance that reflects its
+   place in the journey: closest = who I am, farthest = how to
+   reach me.
+   ============================================================ */
+.orbit-section { padding: 30px 0 10px; }
+
+.orbit-diagram {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 1;
+  margin: 40px auto 0;
+}
+
+.orbit-sun {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 74px; height: 74px;
+  margin: -37px 0 0 -37px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff3d6, var(--gold) 55%, #b9822a 100%);
+  box-shadow: 0 0 50px rgba(246,196,83,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #4a2f00;
+  text-align: center;
+  z-index: 2;
+}
+
+.orbit-path {
+  position: absolute;
+  top: 50%; left: 50%;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.orbit-path.o1 { width: 44%; height: 44%; animation: spin-slow 26s linear infinite; }
+.orbit-path.o2 { width: 66%; height: 66%; animation: spin-slower 38s linear infinite; }
+.orbit-path.o3 { width: 86%; height: 86%; animation: spin-slow 52s linear infinite; }
+.orbit-path.o4 { width: 104%; height: 104%; animation: spin-slower 68s linear infinite; }
+
+.orbit-body {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 92px;
+}
+
+.orbit-planet {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #05060f;
+  transition: transform 0.25s;
+  cursor: pointer;
+}
+.orbit-body:hover .orbit-planet,
+.orbit-body:focus-within .orbit-planet { transform: scale(1.2); }
+
+.o1 .orbit-planet { background: radial-gradient(circle at 35% 30%, #fff, var(--cyan)); box-shadow: var(--glow-cyan); }
+.o2 .orbit-planet { background: radial-gradient(circle at 35% 30%, #e7dcff, var(--aurora)); box-shadow: var(--glow-aurora); }
+.o3 .orbit-planet { background: radial-gradient(circle at 35% 30%, #ffe9c2, var(--gold)); box-shadow: 0 0 18px rgba(246,196,83,0.5); }
+.o4 .orbit-planet { background: radial-gradient(circle at 35% 30%, #cfe, #5fd1c2); box-shadow: var(--glow-cyan); }
+
+.orbit-body a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+.orbit-body .label {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--ink-soft);
+  text-align: center;
+  white-space: nowrap;
+}
+.orbit-body:hover .label,
+.orbit-body:focus-within .label { color: var(--ink); }
+
+@media (max-width: 620px) {
+  .orbit-diagram { max-width: 92vw; }
+  .orbit-body { width: 60px; }
+  .orbit-body .label { font-size: 0.6rem; }
+}
+
+/* comet cursor trail canvas, drawn by js/cursor-comet.js */
+#comet-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+}
+@media (hover: none) { #comet-canvas { display: none; } }
