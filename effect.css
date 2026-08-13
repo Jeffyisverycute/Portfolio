@@ -157,10 +157,10 @@
   border-radius: 50%;
   transform: translate(-50%, -50%);
 }
-.orbit-path.o1 { width: 44%; height: 44%; animation: spin-slow 26s linear infinite; }
-.orbit-path.o2 { width: 66%; height: 66%; animation: spin-slower 38s linear infinite; }
-.orbit-path.o3 { width: 86%; height: 86%; animation: spin-slow 52s linear infinite; }
-.orbit-path.o4 { width: 104%; height: 104%; animation: spin-slower 68s linear infinite; }
+.orbit-path.o1 { width: 44%; height: 44%; }
+.orbit-path.o2 { width: 66%; height: 66%; }
+.orbit-path.o3 { width: 86%; height: 86%; }
+.orbit-path.o4 { width: 104%; height: 104%; }
 
 /* Each planet travels its own orbit path via rotate → translateX → counter-rotate,
    the same technique that already worked for .porthole-orbiter. The final
