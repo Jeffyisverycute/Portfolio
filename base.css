@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Sarabun:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+/* ============================================================
+   TOKENS — "จักรวาลของสาสิธราภรณ์" design system
+   bg-void      : the black between stars
+   bg-nebula    : the deep indigo cloud everything sits on
+   bg-panel     : slightly lighter panel surface (HUD glass)
+   aurora       : primary accent — violet ion trail
+   cyan         : secondary accent — cyan starlight
+   gold         : rare accent — used ONLY for the sun / active state
+   ============================================================ */
+:root {
+  --bg-void:      #05060f;
+  --bg-nebula:    #0a0e26;
+  --bg-panel:     #10163a;
+  --bg-panel-2:   #141b46;
+  --line:         rgba(148, 163, 220, 0.18);
+  --line-strong:  rgba(148, 163, 220, 0.34);
+
+  --aurora:       #8b6bff;
+  --aurora-soft:  #6b52c9;
+  --cyan:         #46e6d5;
+  --cyan-soft:    #2fa79c;
+  --gold:         #f6c453;
+
+  --ink:          #eef0fb;
+  --ink-soft:     #a6adcf;
+  --ink-faint:    #6e759c;
+
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Sarabun', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  --shadow-panel: 0 30px 80px -20px rgba(0,0,0,0.65), 0 0 0 1px var(--line) inset;
+  --glow-aurora: 0 0 24px rgba(139,107,255,0.45);
+  --glow-cyan: 0 0 20px rgba(70,230,213,0.4);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-void);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.75;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* layered nebula wash behind the star canvas */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse 900px 600px at 12% -5%, rgba(139,107,255,0.22), transparent 60%),
+    radial-gradient(ellipse 800px 700px at 92% 10%, rgba(70,230,213,0.14), transparent 55%),
+    radial-gradient(ellipse 1000px 800px at 50% 120%, rgba(246,196,83,0.06), transparent 60%),
+    linear-gradient(180deg, var(--bg-void) 0%, var(--bg-nebula) 45%, var(--bg-void) 100%);
+}
+
+#star-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+p { color: var(--ink-soft); }
+
+a { color: inherit; text-decoration: none; }
+
+::selection { background: var(--aurora); color: #05060f; }
+
+code, .mono { font-family: var(--font-mono); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
