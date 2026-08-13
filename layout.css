@@ -1,0 +1,185 @@
+/* ============================================================
+   NAV — mission control HUD bar
+   ============================================================ */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 6vw;
+  background: rgba(10, 14, 38, 0.72);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.brand-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, #d9c4ff, var(--aurora) 55%, var(--aurora-soft) 100%);
+  box-shadow: var(--glow-aurora);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #05060f;
+  flex-shrink: 0;
+  position: relative;
+}
+.brand-badge::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px dashed rgba(139,107,255,0.5);
+  animation: spin-slow 14s linear infinite;
+}
+
+.brand-sub {
+  display: block;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.66rem;
+  letter-spacing: 1.5px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  font-size: 1.3rem;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+}
+
+.navlinks {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navlinks a {
+  position: relative;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+  color: var(--ink-soft);
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+
+.navlinks a:hover { color: var(--ink); background: rgba(148,163,220,0.08); }
+
+.navlinks a[aria-current="page"] {
+  color: #05060f;
+  background: linear-gradient(120deg, var(--cyan), var(--aurora));
+  font-weight: 700;
+  box-shadow: var(--glow-cyan);
+}
+
+@media (max-width: 760px) {
+  .nav-toggle { display: block; }
+  .navlinks {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(10,14,38,0.96);
+    border-bottom: 1px solid var(--line);
+    padding: 10px 6vw 18px;
+    display: none;
+    gap: 4px;
+  }
+  .navlinks.open { display: flex; }
+  .navlinks a { padding: 12px 16px; }
+}
+
+/* ============================================================
+   PAGE SHELL
+   ============================================================ */
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 64px 6vw 100px;
+  position: relative;
+}
+
+.page-header {
+  margin-bottom: 48px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.page-header h1 {
+  font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+  background: linear-gradient(120deg, var(--ink) 40%, var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.page-header .sub {
+  margin-top: 10px;
+  color: var(--ink-faint);
+  font-size: 0.95rem;
+  max-width: 56ch;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  text-align: center;
+  padding: 34px 6vw 60px;
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.5px;
+  border-top: 1px solid var(--line);
+}
