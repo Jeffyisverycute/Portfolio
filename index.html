@@ -1,1 +1,137 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>จักรวาลของ Sasitharaphorn Suwannaphrom</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
 
+<canvas id="star-canvas" aria-hidden="true"></canvas>
+
+<nav class="topnav">
+  <div class="brand">
+    <span class="brand-badge">SS</span>
+    <span>
+      Sasitharaphorn Suwannaphrom
+      <span class="brand-sub">Mission Portfolio</span>
+    </span>
+  </div>
+  <button class="nav-toggle" aria-label="เปิดเมนู" aria-expanded="false">&#9776;</button>
+  <ul class="navlinks">
+    <li><a href="index.html" aria-current="page">ฐานปฏิบัติการ</a></li>
+    <li><a href="personal.html">ประวัติส่วนตัว</a></li>
+    <li><a href="education.html">ภารกิจการศึกษา</a></li>
+    <li><a href="activities.html">บันทึกผลงาน</a></li>
+    <li><a href="contact.html">คลื่นความถี่ติดต่อ</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="hero">
+    <div data-reveal>
+      <span class="eyebrow">Launch sequence · Portfolio</span>
+      <h1>สำรวจจักรวาลของ<br><span class="accent">ส้มเน่า</span></h1>
+      <p class="lede">เว็บไซต์นี้คือยานสำรวจส่วนตัวของผม รวบรวมประวัติ เส้นทางการศึกษา และผลงานที่ผ่านมาไว้ในที่เดียว เลือกดาวเคราะห์ดวงใดดวงหนึ่งด้านล่างเพื่อเริ่มการเดินทาง</p>
+      <div class="hero-cta">
+        <a href="personal.html" class="btn btn-solid">เริ่มสำรวจ</a>
+        <a href="contact.html" class="btn btn-ghost">ติดต่อภารกิจ</a>
+      </div>
+      <div class="hero-meta">
+        <span><b>สถานะ</b>กำลังศึกษาอยู่</span>
+        <span><b>รหัสภารกิจ</b>SS-2569</span>
+        <span><b>ฐานที่มั่น</b>ประเทศไทย</span>
+      </div>
+    </div>
+
+    <div class="porthole" data-reveal data-reveal-delay="150">
+      <div class="porthole-ring"></div>
+      <div class="porthole-ring r2"></div>
+      <div class="porthole-ring r3"></div>
+      <div class="porthole-frame">
+        <!-- เปลี่ยนเป็น <img src="images/ภาพเจฟฟี่.png" alt="ภาพของ Sasitharaphorn"> -->
+        <img src="images/ภาพเจฟฟี่.png" alt="ภาพของ Sasitharaphorn Suwannaphrom">
+      </div>
+      <div class="porthole-orbiter" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="orbit-section" data-reveal>
+    <span class="eyebrow">Navigation array</span>
+    <h2 style="font-size:1.5rem;">แผนที่วงโคจร</h2>
+    <p style="max-width:56ch;margin-top:10px;">แต่ละดาวเคราะห์คือหนึ่งหมวดหมู่ของเว็บไซต์ ยิ่งอยู่ใกล้ดวงอาทิตย์ตรงกลาง ยิ่งเป็นข้อมูลพื้นฐานเกี่ยวกับตัวผม ยิ่งอยู่ไกล ยิ่งเป็นข้อมูลสำหรับติดต่อและเชื่อมโยงออกไปสู่ภายนอก</p>
+
+    <div class="orbit-diagram">
+      <div class="orbit-sun">SUN·SS</div>
+
+      <div class="orbit-path o1"></div>
+      <div class="orbit-path o2"></div>
+      <div class="orbit-path o3"></div>
+      <div class="orbit-path o4"></div>
+
+      <div class="orbit-body o1">
+        <a href="personal.html">
+          <span class="orbit-planet">01</span>
+          <span class="label">ประวัติส่วนตัว</span>
+        </a>
+      </div>
+      <div class="orbit-body o2">
+        <a href="education.html">
+          <span class="orbit-planet">02</span>
+          <span class="label">การศึกษา</span>
+        </a>
+      </div>
+      <div class="orbit-body o3">
+        <a href="activities.html">
+          <span class="orbit-planet">03</span>
+          <span class="label">ผลงาน</span>
+        </a>
+      </div>
+      <div class="orbit-body o4">
+        <a href="contact.html">
+          <span class="orbit-planet">04</span>
+          <span class="label">ติดต่อ</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top:70px;">
+    <div class="grid-links">
+      <a class="link-card" href="personal.html" data-reveal>
+        <span class="num">01 · Home base</span>
+        <h3>ประวัติส่วนตัว</h3>
+        <p>ข้อมูลทั่วไปและบัตรประจำตัวนักบินอวกาศของผม</p>
+      </a>
+      <a class="link-card" href="education.html" data-reveal data-reveal-delay="80">
+        <span class="num">02 · Flight log</span>
+        <h3>ภารกิจการศึกษา</h3>
+        <p>เส้นทางการเรียนตั้งแต่อดีตถึงปัจจุบัน เรียงเป็นเส้นเวลา</p>
+      </a>
+      <a class="link-card" href="activities.html" data-reveal data-reveal-delay="160">
+        <span class="num">03 · Mission log</span>
+        <h3>บันทึกผลงาน</h3>
+        <p>ผลงานและกิจกรรมที่เคยผ่านมา 7 ภารกิจ</p>
+      </a>
+      <a class="link-card" href="contact.html" data-reveal data-reveal-delay="240">
+        <span class="num">04 · Comms</span>
+        <h3>คลื่นความถี่ติดต่อ</h3>
+        <p>ช่องทางการติดต่อผมทั้งหมด</p>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>&copy; 2569 Sasitharaphorn Suwannaphrom — Mission Portfolio · transmitted from planet Earth</footer>
+
+<script src="js/starfield.js"></script>
+<script src="js/cursor-comet.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/reveal.js"></script>
+<script src="js/orbit.js"></script>
+</body>
+</html>
