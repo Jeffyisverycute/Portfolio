@@ -125,9 +125,9 @@
 
 .orbit-diagram {
   position: relative;
-  width: 100%;
-  max-width: 640px;
-  aspect-ratio: 1;
+  width: 560px;
+  height: 560px;
+  max-width: 100%;
   margin: 40px auto 0;
 }
 
@@ -162,12 +162,33 @@
 .orbit-path.o3 { width: 86%; height: 86%; animation: spin-slow 52s linear infinite; }
 .orbit-path.o4 { width: 104%; height: 104%; animation: spin-slower 68s linear infinite; }
 
+/* Each planet travels its own orbit path via rotate → translateX → counter-rotate,
+   the same technique that already worked for .porthole-orbiter. The final
+   counter-rotate cancels the planet's own spin so the icon and label stay
+   upright while the whole thing sweeps around the sun. --r sets the radius
+   (must match half the matching .orbit-path diameter below). */
 .orbit-body {
   position: absolute;
-  top: 0; left: 50%;
-  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
   width: 92px;
+  height: 74px;
+  margin: -37px 0 0 -46px;
+  animation-name: orbit-travel;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
+@keyframes orbit-travel {
+  from { transform: rotate(0deg) translateX(var(--r)) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(var(--r)) rotate(-360deg); }
+}
+.orbit-body.o1 { --r: 124px; animation-duration: 26s; }
+.orbit-body.o2 { --r: 186px; animation-duration: 38s; animation-direction: reverse; }
+.orbit-body.o3 { --r: 242px; animation-duration: 52s; }
+.orbit-body.o4 { --r: 292px; animation-duration: 68s; animation-direction: reverse; }
+
+.orbit-body:hover,
+.orbit-body:focus-within { animation-play-state: paused; }
 
 .orbit-planet {
   width: 40px; height: 40px;
@@ -209,8 +230,14 @@
 .orbit-body:focus-within .label { color: var(--ink); }
 
 @media (max-width: 620px) {
-  .orbit-diagram { max-width: 92vw; }
-  .orbit-body { width: 60px; }
+  .orbit-diagram { width: 320px; height: 320px; }
+  .orbit-sun { width: 52px; height: 52px; margin: -26px 0 0 -26px; font-size: 0.52rem; }
+  .orbit-body { width: 60px; height: 62px; margin: -31px 0 0 -30px; }
+  .orbit-body.o1 { --r: 71px; }
+  .orbit-body.o2 { --r: 106px; }
+  .orbit-body.o3 { --r: 138px; }
+  .orbit-body.o4 { --r: 167px; }
+  .orbit-planet { width: 30px; height: 30px; font-size: 0.6rem; }
   .orbit-body .label { font-size: 0.6rem; }
 }
 
